@@ -69,3 +69,9 @@ LK402–xx is the word processing version.
 in UNIX environments. The LK421–xx does not have a numeric keypad or
 LED indicators. Users can still perform numeric keypad functions by using
 alternate key sequences
+
+
+
+
+
+https://ibiblio.org/ggicore/documentation/libgii/0.8.x/input-lk201.7.html
