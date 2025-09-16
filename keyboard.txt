@@ -75,3 +75,8 @@ alternate key sequences
 
 
 https://ibiblio.org/ggicore/documentation/libgii/0.8.x/input-lk201.7.html
+
+
+The lk201 and lk401 devices are keyboards made by Digital Equipment Corporation for some of there older micro computer systems and terminals.
+They connect via a 4 pin RJ connector, which carries 11.8V (+/- 6%), GND, and two bidirectional async RS423 (RS232 Compatible) serial lines, which are Receive and Transmit.
+Pins 1 and 4 are for Data, pin 3 is for voltage, and 
