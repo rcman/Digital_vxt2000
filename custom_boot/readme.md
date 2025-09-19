@@ -29,4 +29,3 @@ Yes, for network booting a VXT2000 terminal you'll need several additional compo
 Network Boot Requirements for VXT2000:
 1. MOP Server (Most Important)
 A VXT2000 can only boot using MOP. DEC wasn't very eager to use bootp/tftp as booting protocols. VXT 2000 and NCP
-
