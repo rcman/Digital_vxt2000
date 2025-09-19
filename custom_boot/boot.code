@@ -1,0 +1,115 @@
+; VAX Bootstrap Code
+; This is a minimal bootstrap loader for DEC VAX systems
+; Typically stored in ROM at physical address 0x20040000
+
+        .TITLE  BOOTSTRAP
+        .IDENT  /V1.0/
+
+; Boot device register definitions
+BOOTDEV = ^X200           ; Boot device register
+RPCS1   = ^X176700        ; RP11 control/status register
+RPDA    = ^X176706        ; RP11 disk address register
+RPBA    = ^X176712        ; RP11 bus address register
+RPWC    = ^X176714        ; RP11 word count register
+
+; Memory locations
+STACK   = ^X7FE           ; Initial stack pointer
+BOOTLOC = ^X0             ; Where to load boot program
+
+START:
+        ; Initialize processor state
+        MTPR    #0, #^X12     ; Clear translation buffer
+        MTPR    #0, #^X11     ; Disable memory management
+        
+        ; Set up minimal stack
+        MOVL    #STACK, SP
+        
+        ; Initialize console
+        JSB     INITCON
+        
+        ; Print boot message
+        PUSHAL  BOOTMSG
+        JSB     PRINT
+        
+        ; Determine boot device
+        MFPR    #^X11, R0     ; Get boot device from processor register
+        MOVL    R0, BOOTDEV
+        
+        ; Read boot block from device
+        JSB     READBOOT
+        
+        ; Jump to loaded boot program
+        JMP     @#BOOTLOC
+
+; Initialize console routine
+INITCON:
+        ; Set up console CSR
+        MOVL    #^X177560, R0  ; Console receiver CSR
+        BISB2   #1, (R0)       ; Enable receiver
+        MOVL    #^X177564, R0  ; Console transmitter CSR
+        BISB2   #^X40, (R0)    ; Enable transmitter
+        RSB
+
+; Print string routine
+; Input: string address on stack
+PRINT:
+        MOVL    4(SP), R1      ; Get string address
+PRINT1:
+        MOVB    (R1)+, R0      ; Get next character
+        BEQL    PRINT2         ; Branch if end of string
+        JSB     PUTCHAR        ; Output character
+        BRB     PRINT1         ; Continue
+PRINT2:
+        RSB
+
+; Output character routine
+; Input: character in R0
+PUTCHAR:
+        MOVL    #^X177564, R2  ; Console transmitter CSR
+PUTC1:
+        BITB    #^X80, (R2)    ; Test ready bit
+        BEQL    PUTC1          ; Wait until ready
+        MOVB    R0, 4(R2)      ; Send character
+        RSB
+
+; Read boot block from disk
+READBOOT:
+        ; This is device-specific code for RP11 disk
+        MOVL    #RPCS1, R1     ; Control register
+        MOVL    #RPWC, R2      ; Word count register
+        MOVL    #RPBA, R3      ; Bus address register
+        MOVL    #RPDA, R4      ; Disk address register
+        
+        ; Set up transfer
+        MOVW    #-256, (R2)    ; Word count (512 bytes)
+        MOVL    #BOOTLOC, (R3) ; Buffer address
+        MOVW    #0, (R4)       ; Disk address (block 0)
+        
+        ; Start read operation
+        MOVW    #^X71, (R1)    ; Read command + GO
+        
+        ; Wait for completion
+WAIT:   BITW    #^X8000, (R1)  ; Test ready bit
+        BEQL    WAIT           ; Wait until done
+        
+        ; Check for errors
+        BITW    #^X8000, (R1)  ; Test error bit
+        BNEQ    BOOTERR        ; Branch if error
+        RSB
+
+; Boot error handler
+BOOTERR:
+        PUSHAL  ERRMSG
+        JSB     PRINT
+        HALT                   ; Stop processor
+
+; Data section
+BOOTMSG:
+        .ASCII  /VAX Bootstrap Loader V1.0/
+        .BYTE   13, 10, 0      ; CR, LF, null terminator
+
+ERRMSG:
+        .ASCII  /Boot Error - System Halted/
+        .BYTE   13, 10, 0
+
+        .END    START
