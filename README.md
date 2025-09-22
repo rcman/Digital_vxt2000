@@ -108,3 +108,21 @@ https://gunkies.org/wiki/Netbooting_a_VAXstation
 
 https://jack23247.github.io/blog/sysadm/netbsd-vax-netboot/
 
+<BR>
+
+New Find
+
+<BR>
+
+DEC 17-03851-01 RGB to VGA Video Cable
+
+<BR>
+
+
+
+![101_7783__08554__78568](https://github.com/user-attachments/assets/c6bf0d8f-f9b9-4a22-9b1a-a6e91c212b70)
+
+<BR>
+
+
+
