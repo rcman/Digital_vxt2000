@@ -103,6 +103,8 @@ https://www.netbsd.org/docs/network/netboot/nfs.html
 
 
 https://gunkies.org/wiki/Netbooting_a_VAXstation
+
 <BR>
+
 https://jack23247.github.io/blog/sysadm/netbsd-vax-netboot/
 
