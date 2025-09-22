@@ -19,3 +19,15 @@ Consumer CRTs (some models have BNC inputs)
 
     Panasonic CT-S Series: (e.g., CT-S1390Y)
     Hitachi SuperScan P Series: (e.g., CM815-P)
+
+
+
+Examples of ViewSonic CRT Models with BNC:
+
+    Graphics Series (G):
+    Models like the G90f, G225f, and GS790 were often equipped with BNC inputs. 
+
+Gaming Series (GF):
+The GF790 and GF810 are examples of ViewSonic's gaming-focused CRTs that included BNC connectors for professional-grade input. 
+Professional Series (P):
+ViewSonic's professional series monitors, such as the P95f, frequently featured BNC inputs and were designed for applications requiring the highest video quality. 
