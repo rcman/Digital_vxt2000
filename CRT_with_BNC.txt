@@ -1,0 +1,21 @@
+Many professional CRT monitors and some high-end consumer models from brands like Sony (PVM, GDM, BVM series), Ikegami, Hitachi, and Panasonic (BT, AG-S series) utilized BNC connectors for their video inputs. Specific models often include Sony PVM-2530, PVM-4300, GDM-W900, and Ikegami TM-series monitors. Consumer models, like some Panasonic CT-S series and the Hitachi SuperScan P series, also offered BNC inputs.  
+Here is a more detailed list of models and series:
+Professional CRTs (often have BNC connectors) 
+
+    Sony:
+        PVM Series: (e.g., PVM-2530, PVM-4300)
+        GDM Series: (Graphics Display Monitor, e.g., GDM-W900)
+        BVM Series: (Broadcast Video Monitor, not explicitly listed but common for professional use)
+        Profeel Series: (e.g., KX-1901A) 
+    Ikegami:
+        TM Series: (e.g., TM32-17, TM24-17) 
+    Hitachi:
+        SuperScan Series: (e.g., CM815-P, CM814U) 
+    Panasonic:
+        BT Series: (e.g., BT-S901Y)
+        AG-S Series: (e.g., AG-500R) 
+
+Consumer CRTs (some models have BNC inputs) 
+
+    Panasonic CT-S Series: (e.g., CT-S1390Y)
+    Hitachi SuperScan P Series: (e.g., CM815-P)
