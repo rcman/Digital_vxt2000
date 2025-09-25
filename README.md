@@ -129,4 +129,30 @@ DEC 17-03851-01 RGB to VGA Video Cable
 <BR>
 <BR>
 https://www.openbsd.org/vax.html
+<BR>
+<BR>
+
+# CRITICAL INFO!!!!!
+
+<BR>
+<BR>
+
+VXT2000 machines have a W3 jumper on the motherboard, near the power supply<BR>
+  connector. When the jumper is open, the VXT2000 will use the keyboard and<BR>
+  frame buffer console (this is the factory configuration). Shorting the<BR>
+  jumper will switch to serial console on the DB25 serial connector, and will<BR>
+  disable the frame buffer.<BR><BR>
+
+- VAXstation 35x0 do not have a permanent setting to force console on the<BR>
+  printer/console serial port. It will, however, default to serial console<BR>
+  if the graphics option boards are removed from the machine, or if the<BR>
+  ``Halt'' button on the maintainence panel is kept pressed during powerup<BR>
+  or reset, until the I/O panel led indicator displays `B' and output<BR>
+  appears on the serial port.<BR><BR>
+
+Note that, if the frame buffer in your VAXstation is not supported, OpenBSD<BR>
+will use serial port 3 as the console, as if the S3 switch had been in the<BR>
+up position.<BR><BR>
+
+
 
