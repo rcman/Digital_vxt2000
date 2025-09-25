@@ -155,4 +155,8 @@ will use serial port 3 as the console, as if the S3 switch had been in the<BR>
 up position.<BR><BR>
 
 
+<BR>
+<BR>
+
+![image](https://github.com/user-attachments/assets/5db0c300-fadc-427b-9c39-9a836f45aafd)
 
