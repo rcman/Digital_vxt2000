@@ -1,0 +1,18 @@
+Accessing the RGB Signal
+•  External Connection (Recommended First Step): This 3W3 port is your direct source for the RGB signals—no need to open the unit unless you’re doing internal mods. The signals are analog RGB at TTL levels (around 0.7V p-p), suitable for most vintage converters or scalers.
+	•  To tap in: Use a 3W3 breakout cable or adapter (DEC part #17-02441-01 or equivalents; search vintage computer parts sites like eBay for “3W3 video cable”). If unavailable, you can DIY by sourcing a 3W3 male connector and soldering mini coax cables to extract R, G (w/ sync), B, and ground.
+	•  Pinout (facing the port on the terminal):
+		•  Pin 1 (left): Blue video
+		•  Pin 2 (center): Green video + composite sync (sync is ~4V p-p on the green line)
+		•  Pin 3 (right): Red video
+		•  Shell: Ground
+	•  Ground is shared; no separate H/V sync lines—it’s all composite sync on green.
+Connecting to Your VGA Converter Board
+Since you already have a board that converts RGB to VGA, wire it as follows (assuming standard TTL RGBHV/SOG input on your board—confirm your board’s specs):
+•  Red: From 3W3 Pin 3 → Red input on converter
+•  Green: From 3W3 Pin 2 → Green input on converter (your board should handle the embedded sync; if it requires separate H/V sync, you’ll need an additional sync stripper circuit like an LM1881 chip)
+•  Blue: From 3W3 Pin 1 → Blue input on converter
+•  Ground: From 3W3 shell → Ground on converter
+•  Power your converter separately (5V DC typical) and output to VGA for your monitor.
+Test with a known-good LCD or scaler that supports SOG (e.g., many Extron or Kramer units) before permanent wiring. Resolution is typically 1024x768 or 1280x1024 at 60-75Hz, so set your monitor accordingly.
+If this is the monochrome model (VX225), it uses a similar 3W3 but single-signal (luma only)—let me know for adjusted details. For internal wiring (e.g., tapping the video amp board), you’d need to open the chassis and probe the video DAC outputs on the system logic module, but that’s riskier and unnecessary with the external port available.
