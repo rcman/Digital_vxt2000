@@ -1,4 +1,6 @@
-MOPD install
+#!/bin/bash
+
+There are more tasks than a script. It will be a script eventually but not yet.
 
 sudo apt install git build-essential tftpd bootp nfs-kernel-server
 
