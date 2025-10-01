@@ -1,0 +1,12 @@
+The boot.mop file used by the DEC VXT2000 terminal during MOP (Maintenance Operation Protocol) booting is a network-loadable binary image file, specifically formatted for transmission and execution over DECnet Ethernet. It typically contains either a minimal boot loader (secondary or tertiary loader) or a full VXT software image, depending on your setup—such as a host-based image from an InfoServer or VMS system, or a lightweight VXT loader for initial bootstrapping.
+Key Contents and Structure
+Under the MOP protocol, the file isn’t a simple executable but a sequence of structured messages designed for memory loading and transfer. Its core elements include:
+•  Header and Message Codes: Starts with a 1-byte CODE field identifying the message type (e.g., CODE 11 for “Memory Load with Transfer Address” to deliver the main image data).
+•  Load Parameters: Includes fields like LOADNUM (1-byte incrementing counter for multi-block loads), LOADADDR (4-byte memory address where data is written), and TRANSFER ADDR (4-byte execution start point after loading).
+•  Image Data: The bulk of the file is machine-dependent binary IMAGE DATA—raw bytes or words of the VXT2000’s boot code. This could be:
+	•  A secondary loader (PGMTYPE 0): A small program loaded at a low memory address (e.g., location 6 on PDP-11-like systems, adapted for the VXT’s architecture) to handle larger subsequent loads.
+	•  A tertiary loader (PGMTYPE 1): Loaded higher in memory (e.g., at 10000 octal) for more advanced features like memory management before pulling in the full OS.
+	•  Full system image (PGMTYPE 2): The complete VXT2000 X Window System software, including monochrome/color graphics support, virtual memory handling (up to 16MB RAM), and session startup code.
+•  Parameters and End Markers: Optional PARAMETER ENTRY blocks for system config (e.g., node name, DECnet address) and a 1-byte ENDMARK (value 0) to signal completion.
+During boot, the VXT2000’s ROM sends a MOP “Request Program” message to the mopd server, which responds by streaming the boot.mop contents as these load messages. The terminal assembles them in RAM, verifies via acknowledgments, and jumps to the transfer address to run the code—initializing hardware, loading any remaining modules, and starting an X session.
+If you have the actual file, you could hex-dump it to inspect the binary structure, but it’s not human-readable without DEC-specific tools. For VXT2000 specifics, check your terminal’s setup menu under the MOP Boot File option to confirm if it’s pointing to a loader or full image.
