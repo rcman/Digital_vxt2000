@@ -1,0 +1,1 @@
+The VXT2000 CPU is the DEC CVAX SOC microprocessor, which integrates a CVAX 78034, a CFPA (Complex Floating-Point Accelerator), a clock chip, and an 8KB cache onto a single die. This System-on-a-Chip (SOC) was used in DEC's X terminals and other embedded applications, operating at 25 or 28.5 MHz
